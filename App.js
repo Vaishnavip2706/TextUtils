@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-//import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
@@ -60,15 +60,18 @@ function App() {
   }
   return (
   <>
+    <Router>
     <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}></Navbar>
     <Alert alert={alert}></Alert>
     <div className="container my-3">
       
-    <TextForm showAlert={showAlert} heading="Enter the text" mode={mode}></TextForm>
-
+    <Routes>
+    <Route path="*" element={<TextForm showAlert={showAlert} heading=" Try TextUtils- Word Counter,Character Counter" mode={mode} />} />
+    <Route path="/about" element={<About mode= {mode} />} />
+    </Routes>
   </div>
+  </Router>
   </>
   );
 }
-
 export default App;
